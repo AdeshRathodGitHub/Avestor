@@ -23,5 +23,9 @@ WebDriver driver;
 	public boolean validateLogo() {
 		return logo.isDisplayed();
 	}
+	
+	public void clickOnSignInBtn() {
+		signInBtn.click();
+	}
 
 }
