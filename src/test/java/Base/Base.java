@@ -20,47 +20,46 @@ public class Base {
 	public Properties prop;
 	public Properties dataProp;
 
+	public Base() {
+		prop = new Properties();
+		File propFile = new File(System.getProperty("user.dir") + "\\src\\main\\java\\config\\Config.properties");
 
-	public  Base() {
-	    prop = new Properties();
-		File propFile= new File(System.getProperty("user.dir")+"\\src\\main\\java\\config\\Config.properties");
-
-		dataProp=new Properties();
-		File dataPropFile= new File(System.getProperty("user.dir")+"\\src\\main\\java\\testData\\testData.properties");
+		dataProp = new Properties();
+		File dataPropFile = new File(
+				System.getProperty("user.dir") + "\\src\\main\\java\\testData\\testData.properties");
 
 		try {
-		FileInputStream fis2= new FileInputStream(dataPropFile);
-		dataProp.load(fis2);
-		}catch(Throwable e) {
+			FileInputStream fis2 = new FileInputStream(dataPropFile);
+			dataProp.load(fis2);
+		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 
-
 		try {
-		FileInputStream fis= new FileInputStream(propFile);
-		prop.load(fis);
-		}catch(Throwable e) {
+			FileInputStream fis = new FileInputStream(propFile);
+			prop.load(fis);
+		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 	}
 
-	public WebDriver init_browser(String browserName) {
-		if(browserName.equalsIgnoreCase("chrome")) {
-			driver= new ChromeDriver();
-		}else if(browserName.equalsIgnoreCase("firefox")) {
-			driver= new FirefoxDriver();
-		}else if(browserName.equalsIgnoreCase("edge")) {
-			driver= new EdgeDriver();
-		}else if(browserName.equalsIgnoreCase("safari")) {
-			driver= new SafariDriver();
-			}
+	public WebDriver init_browser(String browserName, String Url) {
+		if (browserName.equalsIgnoreCase("chrome")) {
+			driver = new ChromeDriver();
+		} else if (browserName.equalsIgnoreCase("firefox")) {
+			driver = new FirefoxDriver();
+		} else if (browserName.equalsIgnoreCase("edge")) {
+			driver = new EdgeDriver();
+		} else if (browserName.equalsIgnoreCase("safari")) {
+			driver = new SafariDriver();
+		}
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Utilities.IMPLICIT_WAIT_TIME));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Utilities.PAGE_LOAD_TIME));
-		driver.get(prop.getProperty("url"));
+		driver.get(Url);
 		return driver;
 	}
-	
+
 	@AfterMethod
 	public void tearDown() {
 		driver.quit();

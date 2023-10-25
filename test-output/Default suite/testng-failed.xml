@@ -5,8 +5,8 @@
     <classes>
       <class name="testDeclarationInvestor.HomePageInvestorTest">
         <methods>
-          <include name="validateLogoVisibleOrNot"/>
           <include name="tearDown"/>
+          <include name="validateRedirectingToFundWebsiteAfterClickingOnPoweredByButton"/>
         </methods>
       </class> <!-- testDeclarationInvestor.HomePageInvestorTest -->
     </classes>
