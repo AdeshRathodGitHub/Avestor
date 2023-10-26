@@ -44,20 +44,20 @@ public class Base {
 		}
 	}
 
-	public WebDriver init_browser(String browserName) {
-		if(browserName.equalsIgnoreCase("chrome")) {
-			driver= new ChromeDriver();
-		}else if(browserName.equalsIgnoreCase("firefox")) {
-			driver= new FirefoxDriver();
-		}else if(browserName.equalsIgnoreCase("edge")) {
-			driver= new EdgeDriver();
-		}else if(browserName.equalsIgnoreCase("safari")) {
-			driver= new SafariDriver();
-			}
+	public WebDriver init_browser(String browserName, String Url) {
+		if (browserName.equalsIgnoreCase("chrome")) {
+			driver = new ChromeDriver();
+		} else if (browserName.equalsIgnoreCase("firefox")) {
+			driver = new FirefoxDriver();
+		} else if (browserName.equalsIgnoreCase("edge")) {
+			driver = new EdgeDriver();
+		} else if (browserName.equalsIgnoreCase("safari")) {
+			driver = new SafariDriver();
+		}
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Utilities.IMPLICIT_WAIT_TIME));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Utilities.PAGE_LOAD_TIME));
-		driver.get(prop.getProperty("url"));
+		driver.get(Url);
 		return driver;
 	}
 	
