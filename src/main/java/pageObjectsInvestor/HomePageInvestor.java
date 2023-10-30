@@ -14,6 +14,9 @@ public class HomePageInvestor {
 
 	@FindBy(xpath = "//span[@class='default-signin-text']/parent::a")
 	private WebElement signInBtn;
+	
+	@FindBy(xpath = "//*[@class='default-signup-btn-text']")
+	private WebElement signUpBtn;
 
 	@FindBy(xpath = "//*[contains(text(),'Please use your funds login page to access your account.')]")
 	private WebElement defaultPageText;
@@ -38,6 +41,10 @@ public class HomePageInvestor {
 
 	public void clickOnSignInBtn() {
 		signInBtn.click();
+	}
+	
+	public void clickOnSignUpBtn() {
+		signUpBtn.click();
 	}
 
 	public boolean validateFundingPageText() {

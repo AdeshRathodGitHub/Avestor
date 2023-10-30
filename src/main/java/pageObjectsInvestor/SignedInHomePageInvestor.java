@@ -12,7 +12,13 @@ public class SignedInHomePageInvestor {
 
 	@FindBy(xpath = "//*[@class='main-panel']")
 	public WebElement mainPanel;
-
+	
+	@FindBy(xpath = "(//a[@role='menuitem'])[1]")
+	public WebElement profileIcon;
+	
+	@FindBy(xpath = "//li//a//*[contains(text(),'Change Password')]")
+	public WebElement changePassword;
+	
 	public SignedInHomePageInvestor(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -21,5 +27,16 @@ public class SignedInHomePageInvestor {
 	public boolean validateSignedInHomePageInvestor() {
 		return mainPanel.isDisplayed();
 	}
+	
+	public void clickOnProfileIcon() {
+		profileIcon.click();
+	}
 
+	public boolean validateChangePasswordIsVisibleOrNot() {
+		return  changePassword.isDisplayed();
+	}
+	
+	public void clickOnChangePasswordButton() {
+		changePassword.click();
+	}
 }
